@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="https://unpkg.com/rxjs@6.2.0/bundles/rxjs.umd.min.js"></script>
+<script>
+
+  const {from, interval} = rxjs;
+  const {merge, zip} = rxjs;
+  const {delay, filter, map} = rxjs.operators;
+
+
+  const o1 = interval(1000);
+  const o2 = interval(1000)
+    .pipe(
+      delay(500),
+      map(v => v * 1000)
+    );
+
+  const combined = merge(o1, o2);
+  // const combined = zip(o1, o2);
+
+  combined.subscribe(
+    v => console.log(v)
+  );
+
+
+</script>
+
+</body>
+</html>

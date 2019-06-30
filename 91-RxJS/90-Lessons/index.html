@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About the Basics</title>
+    <link rel="stylesheet" href="./app/lessons.css">
+</head>
+<body>
+
+<div class="header">
+    <div class="lesson-chooser">
+        Lesson:
+        <select id="lesson-select">
+        </select>
+    </div>
+    <div class="refresh">
+        <button id="reset-button">Reset</button>
+        <input id="show-success-checkbox" type="checkbox">
+        Show Success
+        <input id="es6-checkbox" type="checkbox">
+        Transpile
+        <input id="refresh-checkbox" type="checkbox">
+        Auto-Refresh
+    </div>
+</div>
+
+<div id="content"></div>
+
+<script src="app/lib/babel-polyfill.min.js"></script>
+<script src="app/lib/fetch.js"></script>
+<script src="app/lib/jquery.min.js"></script>
+<script src="app/lib/lodash.js"></script>
+<script src="app/lib/handlebars.min.js"></script>
+<script src="app/lib/jasmine.js"></script>
+<script src="app/lib/jasmine-html.js"></script>
+<script src="app/lib/source-map.min.js"></script>
+<script src="app/lib/babel.js"></script>
+<script src="app/js-lessons.js"></script>
+
+<script src="app/lib/rxjs.umd.js"></script>
+
+<script src="app/app.js"></script>
+<script src="index.js"></script>
+
+</body>
+
+</html>

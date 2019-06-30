@@ -1,0 +1,63 @@
+.topic h1{
+    text-align: center;
+}
+
+.lesson, .goal {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+}
+
+.fail {
+    border-color: red;
+}
+
+.lesson.fail {
+    background-color: #fdd;
+}
+
+.goal.fail {
+    background-color: #fbb;
+}
+
+.success {
+    border-color: green;
+}
+
+.lesson.success {
+    background-color: #dfd;
+}
+
+.goal.success {
+    background-color: #bfb;
+}
+
+.expectation {
+    background: #eef;
+    color: #055;
+}
+
+.code {
+    background: #000;
+    color: #eef;
+}
+
+.expectation, .code {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    margin-left: 3em;
+    padding: 0.5em;
+    font-family: "Menlo", "Monaco", "Andale Mono", "Courier New", "Courier", sans-serif;
+}
+
+.header {
+    display: flex;
+}
+
+.lesson-chooser {
+    flex-grow: 1;
+}
+

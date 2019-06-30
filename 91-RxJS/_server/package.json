@@ -1,0 +1,19 @@
+{
+  "name": "async-demo-server",
+  "version": "0.0.1",
+  "author": "Jonas Bandi",
+  "description": "A demo app with backend access",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "4.16.4",
+    "lodash": "4.17.11",
+    "morgan": "1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.9"
+  }
+}

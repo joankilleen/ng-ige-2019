@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="content1"></div>
+<div id="content2"></div>
+
+<!--<script src="https://unpkg.com/axios@0.18.0/dist/axios.js"></script>-->
+<script src="https://unpkg.com/rxjs@6.2.0/bundles/rxjs.umd.min.js"></script>
+
+<script>
+
+  const {of, from} = rxjs;
+  const {delay, mergeMap, concatMap, switchMap} = rxjs.operators;
+
+  function api1() {
+    return of(42).pipe(delay(1500));
+  }
+
+  function api2() {
+    return of(43).pipe(delay(1000));
+  }
+
+  function api3() {
+    return of(44).pipe(delay(500));
+  }
+
+  stream = from([api1, api2, api3]);
+
+  stream
+    .pipe(
+      mergeMap(x => x())
+    )
+    .subscribe(
+      value => document.getElementById('content1').textContent += value + " "
+    );
+
+  // stream
+  //   .pipe(
+  //     concatMap(x => x())
+  //   )
+  //   .subscribe(
+  //     value => document.getElementById('content1').textContent += value + " "
+  //   );
+
+  // stream
+  //   .pipe(
+  //     switchMap(x => x())
+  //   )
+  //   .subscribe(
+  //     value => document.getElementById('content1').textContent += value + " "
+  //   );
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+<div id="content"></div>
+
+<script src="https://unpkg.com/rxjs@6.2.0/bundles/rxjs.umd.min.js"></script>
+
+<script>
+  const {Observable, of} = rxjs;
+  const {delay} = rxjs.operators;
+
+  // *** Consumer ****
+  const stream = startAsyncOperation();
+
+  stream.subscribe(
+    value => document.getElementById("content").innerText += value,
+    error => console.log('Error: ' + error),
+    () => console.log('Completed!')
+  );
+
+  // DEMO: Introduce subscription object and unsubscribe
+  // setTimeout(
+  //   () => subscription.unsubscribe(),
+  //   2100
+  // );
+
+
+  // *** Producer ****
+  function startAsyncOperation() {
+    const stream = new Observable(
+      observer => {
+        setTimeout(
+          () => {
+            observer.next("This is the result!");
+            observer.complete();
+            // observer.error('Error!!!');
+          },
+          2000
+        );
+      }
+    );
+    return stream;
+
+    //DEMO: Stream with multiple values
+    // const stream = new Observable(
+    //   observer => {
+    //     setTimeout(() => observer.next("This is first value!"), 1000);
+    //     setTimeout(() => observer.next("This is second value!"), 2000);
+    //     setTimeout(() => observer.next("This is third value!"), 3000);
+    //     setTimeout(() => observer.complete(), 3000);
+    //   }
+    // );
+    // return stream;
+
+    // DEMO: Convenience function and operator
+    // const stream = of("This is the result!");
+    // return stream.pipe(
+    //   delay(2000)
+    // );
+  }
+
+
+</script>
+
+</body>
+
+</html>

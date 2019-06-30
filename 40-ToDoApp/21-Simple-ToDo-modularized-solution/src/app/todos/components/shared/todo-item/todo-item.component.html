@@ -1,0 +1,10 @@
+<li>
+
+  <a routerLink="/details/{{todo.id}}">
+    {{todo.title}}
+  </a>
+
+  <button class="remove-button" (click)="removeToDo()">
+    x
+  </button>
+</li>

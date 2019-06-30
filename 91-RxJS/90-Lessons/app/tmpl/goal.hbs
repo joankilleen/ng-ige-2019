@@ -1,0 +1,21 @@
+<div class="goal {{class}}">
+
+    {{#if message}}
+        <div>You should learn {{description}}</div>
+        <div class="expectation">
+            {{message}}
+        </div>
+
+        <div> Check the following code:</div>
+        <div class="code">
+            {{sourceFileName}}
+
+            {{#if originalPosition.line}}
+                at line {{originalPosition.line}}
+            {{/if}}
+        </div>
+    {{else}}
+        <div>Bravo! You grasped {{description}}.  </div>
+    {{/if}}
+
+</div>

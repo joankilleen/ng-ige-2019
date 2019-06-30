@@ -1,0 +1,28 @@
+
+<h4>One Way Binding with Property-Binding or Interpolation:</h4>
+
+<span [innerText]="name" [style.color]="color"></span>
+<span>- {{message1}} ... {{message2}}</span>
+
+
+<h4>Event Binding:</h4>
+<input type="text" (input)="onChange($event)">
+(change event -> passing full event)
+<br>
+
+<input type="text" #input1 (input)="onChange2(input1.value)">
+(change event -> passing value)
+<br>
+
+<input #input2 >
+<button (click)="onChange2(input2.value)">Change</button>
+(click event -> passing value)
+<br>
+
+<input type="text" #input3 (keyup)="onChange2(input3.value)">
+(keyup event -> passing value)
+<br>
+
+<h4>Two Way Binding:</h4>
+
+<input type="text" [(ngModel)]="name">

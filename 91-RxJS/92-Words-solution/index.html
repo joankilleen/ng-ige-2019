@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="content1"></div>
+<div id="content2"></div>
+
+<script src="axios.min.js"></script>
+<script src="https://unpkg.com/rxjs@6.2.0/bundles/rxjs.umd.min.js"></script>
+<script>
+
+  const {range, forkJoin, of, from} = rxjs;
+  const {map, concatMap, flatMap, switchMap} = rxjs.operators;
+
+  const indices = [...Array(10).keys()];
+
+  // SOLUTION 1
+  of(indices)
+    .pipe(
+      map(indices => indices.map(i => 'http://localhost:3456/word/' + i)),
+      map(urls => urls.map(url => axios.get(url))),
+      switchMap(promises => forkJoin(promises)),
+      map(responses => responses.map(response => response.data))
+    )
+    .subscribe(
+      data => document.getElementById('content1').textContent = data.join(' ')
+    );
+
+  // VARIATION OF SOLUTION 1
+  // const words = [];
+  // const url = "http://localhost:3456/word/";
+  //
+  // range(0,9)
+  //   .pipe(
+  //     flatMap((i) => forkJoin(of(i), axios.get(url +i))),
+  //   )
+  //   .subscribe(
+  //     ([index, response]) => words[index] = response.data,
+  //     null,
+  //     () => document.getElementById('content1').textContent = words.join(' ')
+  //   );
+
+
+  // SOLUTION 2
+  // from(indices)
+  //   .pipe(
+  //     map(i => 'http://localhost:3456/word/' + i),
+  //     concatMap(function (url) {
+  //       return axios.get(url);
+  //     }),
+  //     map(response => response.data)
+  //   )
+  //   .subscribe(function (data) {
+  //     document.getElementById('content2').textContent += data + " ";
+  //   });
+
+  // NOT REALLY CORRECT
+  // from(indices)
+  //   .pipe(
+  //     map(i => 'http://localhost:3456/word/' + i),
+  //     flatMap(url => axios.get(url)),
+  //     map(response => response.data)
+  //   )
+  //   .subscribe(function (data) {
+  //     document.getElementById('content1').textContent += data + " ";
+  //   });
+
+  // SOLUTION 3
+  // const words = [];
+  // from(indices)
+  //   .pipe(
+  //     map(i => [i, 'http://localhost:3456/word/' + i]),
+  //     flatMap(([i, url]) => forkJoin(of(i), axios.get(url))),
+  //     map(([i,response]) => [i,response.data])
+  //   )
+  //   .subscribe(function ([i, data]) {
+  //     words[i] = data;
+  //     document.getElementById('content1').textContent = words.join(' ');
+  //   });
+
+</script>
+</body>
+</html>
+
+
+<!--See: http://reactivex.io/documentation/operators-->

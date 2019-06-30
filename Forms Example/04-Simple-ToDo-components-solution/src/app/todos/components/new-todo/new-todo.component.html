@@ -1,0 +1,9 @@
+<div class="new-todo">
+<form #formRef="ngForm">
+  <input name="newToDoTitle" #inputRef="ngModel" type="text" required minlength="3" placeholder="What needs to be done?" autofocus autocomplete="off"
+         [(ngModel)]="newToDoTitle"/>
+  <button class="add-button" *ngIf="formRef.valid" id="add-button" (click)="onAddToDo()">
+    +
+  </button>
+  </form>
+</div>

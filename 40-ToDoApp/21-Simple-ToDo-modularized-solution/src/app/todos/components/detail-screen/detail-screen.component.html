@@ -1,0 +1,21 @@
+<section class="todoapp">
+  <header class="header">
+    <h4>Have a look:</h4>
+    <div class="link-container">
+      <button (click)="backHome()">back ...</button>
+    </div>
+  </header>
+
+  <section *ngIf="currentToDo" class="main">
+    <div class="new-todo">
+      <input type="text"
+             [(ngModel)]="currentToDo.title"
+             (change)="updateToDo()"
+             autofocus autocomplete="off"
+      />
+    </div>
+  </section>
+  Id: {{currentToDo?.id}}
+
+
+</section>

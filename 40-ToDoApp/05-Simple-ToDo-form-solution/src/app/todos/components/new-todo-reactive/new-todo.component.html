@@ -1,0 +1,19 @@
+<div class="new-todo">
+  <form [formGroup]="theForm"
+        (ngSubmit)=" theForm.valid && onSubmit()">
+    <input type="text"
+           formControlName="newToDoTitle"
+           placeholder="What needs to be done?"
+           autofocus autocomplete="off" />
+    <button *ngIf="theForm.valid" type="submit" class="add-button" id="add-button" >
+      +
+    </button>
+  </form>
+</div>
+
+
+<!--Debug:-->
+<!--<br>-->
+<!--{{theForm.valid}}-->
+<!--<br>-->
+<!--{{theForm.controls['newToDoTitle'].errors | json}}-->
